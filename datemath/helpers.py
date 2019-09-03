@@ -159,13 +159,13 @@ def roundDate(now, unit, tz='UTC', roundDown=True):
 
 def calculate(now, offsetval, unit):
     '''
-        calculates our dateobject using arrows replace method
+        calculates our dateobject using arrows shift method
         see unitMap() for more details
     ''' 
     if unit not in ('days','hours','seconds'):
         offsetval = int(offsetval)
     try:
-        now = now.replace(**{unit: offsetval})
+        now = now.shift(**{unit: offsetval})
         if debug: print("Calculate called:  now: {}, offsetval: {}, offsetval-type: {}, unit: {}".format(now, offsetval, type(offsetval), unit))
         return now
     except Exception as e:
